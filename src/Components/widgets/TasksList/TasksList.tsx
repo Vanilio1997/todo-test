@@ -24,8 +24,6 @@ const TasksList = ({
     onChangeText,
     onTaskDelete,
 }: ITaskList) => {
-    console.log('render');
-
     return (
         <ul className={styles.list}>
             {tasks.map((task, index) => (
