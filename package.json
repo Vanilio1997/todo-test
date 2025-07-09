@@ -5,6 +5,8 @@
     "homepage": "https://github.com/Vanilio1997.github.io/todo-test",
     "main": "index.js",
     "scripts": {
+        "build": "webpack --env mode=production",
+        "vercel-build": "npm run build",
         "build:dev": "webpack --env mode=development",
         "build:prod": "webpack --env mode=production",
         "build:desktop": "webpack --env mode=production --env platform=desktop",
