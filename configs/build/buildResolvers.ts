@@ -1,13 +1,13 @@
+import { Configuration } from 'webpack';
 import { IBuildOptions } from './../types/types';
-import { Configuration } from 'webpack'
 
 export function buildResolvers(
-	options: IBuildOptions
+    options: IBuildOptions,
 ): Configuration['resolve'] {
-	return {
-		extensions: ['.tsx', '.ts', '.js'],
-		alias: {    
-			'@': options.paths.src,
-		},
-	}
+    return {
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '@': options.paths.src,
+        },
+    };
 }

@@ -10,8 +10,11 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "baseUrl": ".",
-        "paths": { "@/*": ["./src/*"] },
-        "noUnusedLocals": true
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "noUnusedLocals": true,
+        "types": ["jest", "node", "@testing-library/jest-dom"]
     },
     "ts-node": {
         "compilerOptions": {

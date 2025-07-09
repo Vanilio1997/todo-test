@@ -1,76 +1,64 @@
 import js from '@eslint/js';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import typescriptParser from '@typescript-eslint/parser';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 import eslintReact from 'eslint-plugin-react';
 import eslintReactHooks from 'eslint-plugin-react-hooks';
 import eslintReactRefresh from 'eslint-plugin-react-refresh';
-import { defineConfig } from 'eslint/config';
-import globals from 'globals';
+import prettier from 'eslint-plugin-prettier'; // Добавлено
+import prettierConfig from 'eslint-config-prettier';
 
-export default defineConfig([
-    js.configs.recommended,
+/** @type {import('eslint').Linter.FlatConfig[]} */
+export default tseslint.config(
     {
-        files: ['**/*.{ts,tsx}'],
-        plugins: {
-            '@typescript-eslint': typescriptEslint,
-        },
-        languageOptions: {
-            parser: typescriptParser,
-            parserOptions: {
-                project: true,
-                ecmaFeatures: {
-                    jsx: true,
-                },
-            },
-        },
-        rules: {
-            '@typescript-eslint/no-unused-vars': 'warn',
-            '@typescript-eslint/no-explicit-any': 'warn',
-        },
+        ignores: ['build', 'node_modules', 'eslint.config.mjs'],
     },
-
+    js.configs.recommended,
+    ...tseslint.configs.recommended,
     {
-        files: ['**/*.{jsx,tsx}'],
         plugins: {
+            '@typescript-eslint': tseslint.plugin,
             react: eslintReact,
             'react-hooks': eslintReactHooks,
             'react-refresh': eslintReactRefresh,
-        },
-        rules: {
-            ...eslintReact.configs.recommended.rules,
-            ...eslintReactHooks.configs.recommended.rules,
-            'react-refresh/only-export-components': 'warn',
-            'react/react-in-jsx-scope': 'off',
+            prettier,
         },
     },
-
     {
         languageOptions: {
             globals: {
                 ...globals.browser,
-                ...globals.es2021,
                 ...globals.node,
+                ...globals.es2020,
+            },
+            parserOptions: {
+                project: ['tsconfig.json'],
             },
         },
     },
-
-    // {
-    //     plugins: {
-    //         prettier,
-    //     },
-    //     rules: {
-    //         ...eslintConfigPrettier.rules,
-    //         'prettier/prettier': ['error', { endOfLine: 'lf' }],
-    //     },
-    // },
-
     {
-        ignores: [
-            'node_modules',
-            'dist',
-            'build',
-            '*.config.js',
-            '.eslintrc.js',
-        ],
+        files: ['**/*.{ts,tsx,js,jsx}'],
+        rules: {
+            ...prettierConfig.rules,
+            'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+            'react-refresh/only-export-components': [
+                'warn',
+                { allowConstantExport: true },
+            ],
+            'prefer-const': 'error',
+            'react/jsx-curly-brace-presence': [
+                'warn',
+                { props: 'never', children: 'never' },
+            ],
+            'react/function-component-definition': [
+                'warn',
+                { namedComponents: 'arrow-function' },
+            ],
+            'react/self-closing-comp': [
+                'error',
+                { component: true, html: true },
+            ],
+            'max-lines': ['warn', { max: 124 }],
+            'max-params': ['error', 3],
+        },
     },
-]);
+);
