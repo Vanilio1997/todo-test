@@ -5,8 +5,8 @@
     "homepage": "https://github.com/Vanilio1997.github.io/todo-test",
     "main": "index.js",
     "scripts": {
-        "prepare": "node -e \"if (process.env.NODE_ENV !== 'production' && process.env.VERCEL !== '1') require('husky').install()\"",
-        "vercel-build": "npm install --unsafe-perm && npm run build",
+        "prepare": "node -e \"if (process.env.SKIP_HUSKY !== '1' && !process.env.CI) require('husky').install()\"",
+        "vercel-build": "npm ci --omit=dev --ignore-scripts && npm rebuild && npm run build",
         "build": "webpack --env mode=production",
         "build:dev": "webpack --env mode=development",
         "build:prod": "webpack --env mode=production",
