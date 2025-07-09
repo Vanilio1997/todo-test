@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'Raleway';
     src:
-        url(../7580a6bbba9aa4410404.woff) format('woff'),
-        url(../206fbccab2cd0e499cdf.woff2) format('woff2');
+        url(/build/7580a6bbba9aa4410404.woff) format('woff'),
+        url(/build/206fbccab2cd0e499cdf.woff2) format('woff2');
     font-weight: 100 900;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: url(../1a0e39b4109d6ddcc17d.ttf) format('truetype');
+    src: url(/build/1a0e39b4109d6ddcc17d.ttf) format('truetype');
     font-weight: 100 900;
     font-style: normal;
 }
