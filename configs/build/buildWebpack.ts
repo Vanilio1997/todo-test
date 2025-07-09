@@ -17,7 +17,7 @@ export function buildWebpack(options: IBuildOptions): webpack.Configuration {
             path: paths.output,
             filename: '[name].[contenthash].js',
             clean: true,
-            publicPath: './',
+            publicPath: process.env.VERCEL ? '/' : './',
         },
         devServer: isDev ? buildDevServer(options) : undefined,
         devtool: isDev ? 'inline-source-map' : false,
