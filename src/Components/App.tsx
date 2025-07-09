@@ -2,10 +2,10 @@ import { useState } from 'react';
 import classes from './App.module.css';
 
 export const App = () => {
-    let [count, setCount] = useState<number>(0);
+    const [count, setCount] = useState<number>(0);
     const handleIncrease = () => setCount(prev => prev + 1);
     const handleDecrease = () => setCount(prev => prev - 1);
-
+    console.log(1312);
     return (
         <div>
             {/* <h1>Platform:{__PLATFORM__}</h1> */}
