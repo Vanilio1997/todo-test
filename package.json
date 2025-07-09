@@ -5,6 +5,7 @@
     "homepage": "https://vanilio1997.github.io/todo-test/",
     "main": "index.js",
     "scripts": {
+        "prepare": "node -e \"if (process.env.SKIP_HUSKY !== '1' && !process.env.CI) require('husky').install()\"",
         "build": "webpack --env mode=production",
         "build:dev": "webpack --env mode=development",
         "build:prod": "webpack --env mode=production",
