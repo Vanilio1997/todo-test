@@ -2,7 +2,7 @@
     "name": "testtodo",
     "version": "1.0.0",
     "description": "",
-    "homepage": "https://github.com/Vanilio1997.github.io/todo-test",
+    "homepage": "https://vanilio1997.github.io/todo-test/",
     "main": "index.js",
     "scripts": {
         "prepare": "node -e \"if (process.env.SKIP_HUSKY !== '1' && !process.env.CI) require('husky').install()\"",
